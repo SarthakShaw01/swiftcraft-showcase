@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, ArrowUpRight, Calendar, FileText } from "lucide-react";
 import { SectionHeader } from "./Services";
+import { openBookCall } from "./BookCallDialog";
 
 const tiers = [
   {
@@ -132,8 +133,9 @@ export function Pricing() {
               </div>
 
               <div className="mt-10 flex flex-col gap-3">
-                <a
-                  href="#contact"
+                <button
+                  type="button"
+                  onClick={openBookCall}
                   className={`group/btn inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition ${
                     t.featured
                       ? "bg-foreground text-background hover:opacity-90"
@@ -146,15 +148,16 @@ export function Pricing() {
                     size={16}
                     className="transition-transform group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5"
                   />
-                </a>
+                </button>
                 {!t.featured && (
-                  <a
-                    href="#contact"
+                  <button
+                    type="button"
+                    onClick={openBookCall}
                     className="inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-muted-foreground transition hover:text-foreground"
                   >
                     <FileText size={16} />
                     Request a Custom Quote
-                  </a>
+                  </button>
                 )}
               </div>
             </motion.div>
