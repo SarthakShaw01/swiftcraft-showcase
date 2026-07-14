@@ -55,7 +55,7 @@ function AdminPage() {
   }, [rows, q, status, sort]);
 
   async function updateStatus(id: string, s: string) {
-    const { error } = await supabase.from("enquiries").update({ status: s }).eq("id", id);
+    const { error } = await supabase.from("enquiries").update({ status: s as never }).eq("id", id);
     if (error) alert(error.message); else load();
   }
   async function remove(id: string) {
