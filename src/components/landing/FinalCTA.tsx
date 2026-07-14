@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { openBookCall } from "./nav-actions";
+import { Link } from "@tanstack/react-router";
 
 export function FinalCTA() {
   return (
-    <section id="contact" className="relative py-28 md:py-40">
+    <section id="contact-cta" className="relative py-28 md:py-40">
       <div className="mx-auto w-full max-w-7xl px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -37,21 +37,19 @@ export function FinalCTA() {
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={openBookCall}
+              <Link
+                to="/contact"
                 className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition hover:opacity-90"
               >
                 Book consultation
                 <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </button>
-              <button
-                type="button"
-                onClick={openBookCall}
+              </Link>
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-full border border-hairline bg-background/40 px-6 py-3.5 text-sm font-medium text-foreground backdrop-blur transition hover:bg-background/70"
               >
                 Get a quote
-              </button>
+              </Link>
             </div>
           </div>
         </motion.div>
