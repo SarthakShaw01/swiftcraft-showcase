@@ -18,7 +18,7 @@ type Enquiry = {
   status: string; created_at: string;
 };
 
-const STATUSES = ["new", "contacted", "in_progress", "won", "lost"];
+const STATUSES = ["new", "contacted", "meeting_scheduled", "proposal_sent", "in_progress", "closed"];
 
 function AdminPage() {
   const navigate = useNavigate();
