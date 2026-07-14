@@ -54,7 +54,7 @@ export function Nav() {
 
           <div className="hidden md:flex items-center gap-2">
             <a
-              href="#contact"
+              href="tel:+919875393854"
               className="group inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:opacity-90"
             >
               Book a call
