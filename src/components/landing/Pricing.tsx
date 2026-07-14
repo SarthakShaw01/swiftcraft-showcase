@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Check, ArrowUpRight, Calendar, FileText } from "lucide-react";
 import { SectionHeader } from "./Services";
-import { openBookCall } from "./BookCallDialog";
+import { openBookCall } from "./nav-actions";
 
 const tiers = [
   {

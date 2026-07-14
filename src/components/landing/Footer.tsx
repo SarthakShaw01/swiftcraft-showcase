@@ -1,4 +1,4 @@
-import { openBookCall } from "./BookCallDialog";
+import { openBookCall } from "./nav-actions";
 
 const columns = [
   {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { openBookCall } from "./BookCallDialog";
+import { openBookCall } from "./nav-actions";
 
 const links = [
   { href: "#services", label: "Services" },
