@@ -93,7 +93,7 @@ export function Nav() {
                 </a>
               ))}
               <a
-                href="#contact"
+                href="tel:+919875393854"
                 onClick={() => setOpen(false)}
                 className="mt-3 inline-flex items-center justify-center rounded-full bg-foreground px-4 py-2.5 text-sm font-medium text-background"
               >
