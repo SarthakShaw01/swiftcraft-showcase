@@ -37,14 +37,14 @@ export function FinalCTA() {
 
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
-                href="mailto:hello@swiftcraft.studio"
+                href="mailto:sarthak@swiftcraftstudios.in"
                 className="group inline-flex items-center gap-2 rounded-full bg-foreground px-6 py-3.5 text-sm font-medium text-background transition hover:opacity-90"
               >
                 Book consultation
                 <ArrowUpRight size={16} className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </a>
               <a
-                href="mailto:hello@swiftcraft.studio?subject=Quote%20request"
+                href="mailto:sarthak@swiftcraftstudios.in?subject=Quote%20request"
                 className="inline-flex items-center gap-2 rounded-full border border-hairline bg-background/40 px-6 py-3.5 text-sm font-medium text-foreground backdrop-blur transition hover:bg-background/70"
               >
                 Get a quote
