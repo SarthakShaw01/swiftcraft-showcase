@@ -7,6 +7,7 @@ import { Process } from "./Process";
 import { FeaturedWork } from "./FeaturedWork";
 import { TechStack } from "./TechStack";
 import { Testimonials } from "./Testimonials";
+import { Pricing } from "./Pricing";
 import { FAQ } from "./FAQ";
 import { FinalCTA } from "./FinalCTA";
 import { Footer } from "./Footer";
@@ -23,6 +24,7 @@ export function Landing() {
       <FeaturedWork />
       <TechStack />
       <Testimonials />
+      <Pricing />
       <FAQ />
       <FinalCTA />
       <Footer />
