@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { openBookCall } from "./BookCallDialog";
 
 const links = [
   { href: "#services", label: "Services" },
@@ -53,13 +54,14 @@ export function Nav() {
           </nav>
 
           <div className="hidden md:flex items-center gap-2">
-            <a
-              href="tel:+919875393854"
+            <button
+              type="button"
+              onClick={openBookCall}
               className="group inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:opacity-90"
             >
               Book a call
               <span className="inline-block transition-transform group-hover:translate-x-0.5">→</span>
-            </a>
+            </button>
           </div>
 
           <button
@@ -92,13 +94,16 @@ export function Nav() {
                   {l.label}
                 </a>
               ))}
-              <a
-                href="tel:+919875393854"
-                onClick={() => setOpen(false)}
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  openBookCall();
+                }}
                 className="mt-3 inline-flex items-center justify-center rounded-full bg-foreground px-4 py-2.5 text-sm font-medium text-background"
               >
                 Book a call →
-              </a>
+              </button>
             </nav>
           </motion.div>
         )}

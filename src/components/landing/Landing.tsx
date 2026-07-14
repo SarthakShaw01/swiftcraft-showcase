@@ -11,6 +11,7 @@ import { Pricing } from "./Pricing";
 import { FAQ } from "./FAQ";
 import { FinalCTA } from "./FinalCTA";
 import { Footer } from "./Footer";
+import { BookCallDialog } from "./BookCallDialog";
 
 export function Landing() {
   return (
@@ -28,6 +29,7 @@ export function Landing() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <BookCallDialog />
     </main>
   );
 }

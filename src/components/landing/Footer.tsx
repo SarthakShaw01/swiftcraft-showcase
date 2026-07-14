@@ -1,3 +1,5 @@
+import { openBookCall } from "./BookCallDialog";
+
 const columns = [
   {
     title: "Studio",
@@ -21,7 +23,7 @@ const columns = [
     title: "Contact",
     links: [
       { label: "sarthak@swiftcraftstudios.in", href: "mailto:sarthak@swiftcraftstudios.in" },
-      { label: "Book a call", href: "tel:+919875393854" },
+      { label: "Book a call", href: "#book-a-call", action: "book" as const },
       { label: "Twitter / X", href: "#" },
       { label: "LinkedIn", href: "#" },
     ],
@@ -53,12 +55,22 @@ export function Footer() {
               <ul className="mt-5 space-y-3 text-sm">
                 {c.links.map((l) => (
                   <li key={l.label}>
-                    <a
-                      href={l.href}
-                      className="text-foreground/80 transition hover:text-foreground"
-                    >
-                      {l.label}
-                    </a>
+                    {"action" in l && l.action === "book" ? (
+                      <button
+                        type="button"
+                        onClick={openBookCall}
+                        className="text-left text-foreground/80 transition hover:text-foreground"
+                      >
+                        {l.label}
+                      </button>
+                    ) : (
+                      <a
+                        href={l.href}
+                        className="text-foreground/80 transition hover:text-foreground"
+                      >
+                        {l.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
