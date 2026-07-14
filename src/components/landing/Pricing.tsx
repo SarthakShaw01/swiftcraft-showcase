@@ -58,7 +58,7 @@ const tiers = [
 
 export function Pricing() {
   return (
-    <section id="solutions" className="relative py-28 md:py-40">
+    <section id="plans" className="relative py-28 md:py-40">
       {/* Ambient background glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-[color:var(--violet)]/10 blur-[120px]" />
@@ -66,8 +66,8 @@ export function Pricing() {
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl px-6">
-        <SectionHeader
-          eyebrow="Solutions"
+      <SectionHeader
+          eyebrow="Plans"
           title="Investment that scales with your ambition."
           description="No cookie-cutter packages. Every engagement is scoped around outcomes — built to perform, designed to last."
           center
