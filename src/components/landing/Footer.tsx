@@ -21,7 +21,7 @@ const columns = [
     title: "Contact",
     links: [
       { label: "sarthak@swiftcraftstudios.in", href: "mailto:sarthak@swiftcraftstudios.in" },
-      { label: "Book a call", href: "#contact" },
+      { label: "Book a call", href: "tel:+919875393854" },
       { label: "Twitter / X", href: "#" },
       { label: "LinkedIn", href: "#" },
     ],
