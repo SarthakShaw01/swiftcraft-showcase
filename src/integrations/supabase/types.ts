@@ -14,39 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
-      consultation_requests: {
+      enquiries: {
         Row: {
+          additional_notes: string | null
           budget: string
+          company: string | null
+          contact_method: string
           created_at: string
+          description: string
           email: string
           id: string
-          message: string | null
+          industry: string | null
+          mobile: string
           name: string
-          phone: string
-          preferred_datetime: string | null
-          purposes: string[]
+          preferred_date: string | null
+          preferred_time: string | null
+          services: string[]
+          status: Database["public"]["Enums"]["enquiry_status"]
+          updated_at: string
+          website: string | null
+          whatsapp: string | null
         }
         Insert: {
+          additional_notes?: string | null
           budget: string
+          company?: string | null
+          contact_method: string
           created_at?: string
+          description: string
           email: string
           id?: string
-          message?: string | null
+          industry?: string | null
+          mobile: string
           name: string
-          phone: string
-          preferred_datetime?: string | null
-          purposes?: string[]
+          preferred_date?: string | null
+          preferred_time?: string | null
+          services?: string[]
+          status?: Database["public"]["Enums"]["enquiry_status"]
+          updated_at?: string
+          website?: string | null
+          whatsapp?: string | null
         }
         Update: {
+          additional_notes?: string | null
           budget?: string
+          company?: string | null
+          contact_method?: string
           created_at?: string
+          description?: string
           email?: string
           id?: string
-          message?: string | null
+          industry?: string | null
+          mobile?: string
           name?: string
-          phone?: string
-          preferred_datetime?: string | null
-          purposes?: string[]
+          preferred_date?: string | null
+          preferred_time?: string | null
+          services?: string[]
+          status?: Database["public"]["Enums"]["enquiry_status"]
+          updated_at?: string
+          website?: string | null
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
         }
         Relationships: []
       }
@@ -55,10 +103,23 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin"
+      enquiry_status:
+        | "new"
+        | "contacted"
+        | "meeting_scheduled"
+        | "proposal_sent"
+        | "in_progress"
+        | "closed"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -185,6 +246,16 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin"],
+      enquiry_status: [
+        "new",
+        "contacted",
+        "meeting_scheduled",
+        "proposal_sent",
+        "in_progress",
+        "closed",
+      ],
+    },
   },
 } as const

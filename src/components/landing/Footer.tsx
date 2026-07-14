@@ -1,34 +1,30 @@
-import { openBookCall } from "./BookCallDialog";
+import { Link } from "@tanstack/react-router";
 
 const columns = [
   {
     title: "Studio",
     links: [
-      { label: "Services", href: "#services" },
-      { label: "Work", href: "#work" },
-      { label: "Process", href: "#process" },
-      { label: "FAQ", href: "#faq" },
+      { label: "Services", to: "/services" },
+      { label: "Work", to: "/work" },
+      { label: "Process", to: "/process" },
+      { label: "About", to: "/about" },
     ],
   },
   {
-    title: "Services",
+    title: "Explore",
     links: [
-      { label: "Web Development", href: "#services" },
-      { label: "UI/UX Design", href: "#services" },
-      { label: "Custom Software", href: "#services" },
-      { label: "AI Automation", href: "#services" },
+      { label: "Plans", to: "/plans" },
+      { label: "Contact", to: "/contact" },
     ],
   },
   {
     title: "Contact",
-    links: [
+    external: [
       { label: "sarthak@swiftcraftstudios.in", href: "mailto:sarthak@swiftcraftstudios.in" },
-      { label: "Book a call", href: "#book-a-call", action: "book" as const },
-      { label: "Twitter / X", href: "#" },
-      { label: "LinkedIn", href: "#" },
+      { label: "+91 98753 93854", href: "tel:+919875393854" },
     ],
   },
-];
+] as const;
 
 export function Footer() {
   return (
@@ -53,32 +49,26 @@ export function Footer() {
                 {c.title}
               </div>
               <ul className="mt-5 space-y-3 text-sm">
-                {c.links.map((l) => (
-                  <li key={l.label}>
-                    {"action" in l && l.action === "book" ? (
-                      <button
-                        type="button"
-                        onClick={openBookCall}
-                        className="text-left text-foreground/80 transition hover:text-foreground"
-                      >
-                        {l.label}
-                      </button>
-                    ) : (
-                      <a
-                        href={l.href}
-                        className="text-foreground/80 transition hover:text-foreground"
-                      >
-                        {l.label}
-                      </a>
-                    )}
-                  </li>
-                ))}
+                {"external" in c
+                  ? c.external.map((l) => (
+                      <li key={l.label}>
+                        <a href={l.href} className="text-foreground/80 transition hover:text-foreground">
+                          {l.label}
+                        </a>
+                      </li>
+                    ))
+                  : c.links.map((l) => (
+                      <li key={l.label}>
+                        <Link to={l.to} className="text-foreground/80 transition hover:text-foreground">
+                          {l.label}
+                        </Link>
+                      </li>
+                    ))}
               </ul>
             </div>
           ))}
         </div>
 
-        {/* Wordmark */}
         <div aria-hidden className="mt-20 select-none">
           <div className="font-display text-[18vw] leading-none text-transparent [background:linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0))] bg-clip-text">
             SwiftCraft
@@ -88,8 +78,6 @@ export function Footer() {
         <div className="mt-10 flex flex-col items-start justify-between gap-4 border-t border-hairline pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} SwiftCraft Studios. All rights reserved.</div>
           <div className="flex items-center gap-6">
-            <a href="#" className="hover:text-foreground">Privacy</a>
-            <a href="#" className="hover:text-foreground">Terms</a>
             <span className="flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Available for Q3 2026

@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { openBookCall } from "./BookCallDialog";
+import { Link, useRouterState } from "@tanstack/react-router";
 
 const links = [
-  { href: "#services", label: "Services" },
-  { href: "#work", label: "Work" },
-  { href: "#process", label: "Process" },
-  { href: "#plans", label: "Plans" },
-  { href: "#faq", label: "FAQ" },
-];
+  { to: "/", label: "Home" },
+  { to: "/services", label: "Services" },
+  { to: "/work", label: "Work" },
+  { to: "/process", label: "Process" },
+  { to: "/plans", label: "Plans" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
+] as const;
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -21,6 +24,10 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
 
   return (
     <header
@@ -34,34 +41,34 @@ export function Nav() {
             scrolled ? "glass" : ""
           }`}
         >
-          <a href="#top" className="flex items-center gap-2 font-medium tracking-tight">
+          <Link to="/" className="flex items-center gap-2 font-medium tracking-tight">
             <span className="grid size-7 place-items-center rounded-md bg-foreground text-background">
               <span className="font-display text-base leading-none">S</span>
             </span>
             <span className="text-sm">SwiftCraft<span className="text-muted-foreground"> Studios</span></span>
-          </a>
+          </Link>
 
           <nav className="hidden md:flex items-center gap-1">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="rounded-full px-4 py-1.5 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground"
+            {links.slice(1, -1).map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                activeOptions={{ exact: true }}
+                className="rounded-full px-3 py-1.5 text-sm text-muted-foreground transition hover:bg-white/5 hover:text-foreground data-[status=active]:text-foreground data-[status=active]:bg-white/5"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           <div className="hidden md:flex items-center gap-2">
-            <button
-              type="button"
-              onClick={openBookCall}
+            <Link
+              to="/contact"
               className="group inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-medium text-background transition hover:opacity-90"
             >
               Book a call
               <span className="inline-block transition-transform group-hover:translate-x-0.5">→</span>
-            </button>
+            </Link>
           </div>
 
           <button
@@ -85,25 +92,20 @@ export function Nav() {
           >
             <nav className="flex flex-col">
               {links.map((l) => (
-                <a
-                  key={l.href}
-                  href={l.href}
-                  onClick={() => setOpen(false)}
+                <Link
+                  key={l.to}
+                  to={l.to}
                   className="px-3 py-3 text-sm text-muted-foreground hover:text-foreground border-b border-hairline last:border-0"
                 >
                   {l.label}
-                </a>
+                </Link>
               ))}
-              <button
-                type="button"
-                onClick={() => {
-                  setOpen(false);
-                  openBookCall();
-                }}
+              <Link
+                to="/contact"
                 className="mt-3 inline-flex items-center justify-center rounded-full bg-foreground px-4 py-2.5 text-sm font-medium text-background"
               >
                 Book a call →
-              </button>
+              </Link>
             </nav>
           </motion.div>
         )}
