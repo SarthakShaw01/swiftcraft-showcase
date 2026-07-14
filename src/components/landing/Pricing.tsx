@@ -5,7 +5,7 @@ import { SectionHeader } from "./Services";
 const tiers = [
   {
     name: "Starter",
-    price: "₹9,999",
+    price: "₹14,999",
     scope: "Landing Pages & Basic Business Websites",
     description:
       "A sharp, high-performance presence for early-stage brands, founders, and small businesses ready to convert visitors.",
